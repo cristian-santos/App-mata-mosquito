@@ -22,13 +22,47 @@ function posicaoRandomica() {
 
     var mosquito = document.createElement('img');
     mosquito.src = 'imagens/mosquito.png';
-    mosquito.className  = 'mosquito1';
+    mosquito.className  = tamanhoAleatorio() + ' ' + ladoAleatorio();
     mosquito.style.left = posicao_x + 'px';
     mosquito.style.top  = posicao_y + 'px';
     mosquito.style.position = 'absolute';
 
     document.body.appendChild(mosquito);
+
 }
 
+function tamanhoAleatorio() {
+    var classe = Math.floor(Math.random() * 3);
+
+    if(classe == 0) {
+        return 'mosquito1'
+    } else if(classe == 1) {
+        return 'mosquito2';
+    } else {
+        return 'mosquito3';
+    }
+    // switch(classe) {
+    //     case 0:
+    //         return 'mosquito1'
+            
+    //     case 1:
+    //         return 'mosquito2';
+
+    //     case 2:
+    //         return 'mosquito3';
+    // }
+}
+
+function ladoAleatorio() {
+    var classe = Math.floor(Math.random() * 2);
+
+    switch(classe) {
+        case 0:
+            return 'ladoA'
+            
+        case 1:
+            return 'ladoB';
+    }
+}
 
 
