@@ -1,5 +1,7 @@
 var altura  = 0;
 var largura = 0;
+var vidas   = 1;
+var tempo   = 10;
 
 function ajustaTamanhoJogo() {
     altura  = window.innerHeight;
@@ -9,15 +11,35 @@ function ajustaTamanhoJogo() {
 
 ajustaTamanhoJogo();
 
+var cronometro = setInterval(function() {
+    tempo -= 1
+    if(tempo < 0) {
+        clearInterval(cronometro);
+        clearInterval(criaMosquito);
+        window.location.href = 'vitoria.html';
+    } else {
+        document.getElementById('cronometro').innerHTML = tempo;
+    }
+    
+    
+}, 1000);
+
 function posicaoRandomica() {
 
     // Remover o mosquito anterior
     if( document.getElementById('mosquito')) {
         document.getElementById('mosquito').remove();
+        
+        if(vidas > 3) {
+            window.location.href = 'fim_de_jogo.html';
+        } else {
+            document.getElementById('vida' + vidas).src = "imagens/coracao_vazio.png";
+            vidas++;
+        }
     }
 
-    var posicao_x = Math.floor(Math.random() * largura) - 100;
-    var posicao_y = Math.floor(Math.random() * altura) - 100;
+    var posicao_x = Math.floor(Math.random() * largura) - 150;
+    var posicao_y = Math.floor(Math.random() * altura) - 150;
 
     posicao_x = posicao_x < 0 ? 0 : posicao_x
     posicao_Y = posicao_y < 0 ? 0 : posicao_y;
@@ -32,7 +54,10 @@ function posicaoRandomica() {
     mosquito.style.left = posicao_x + 'px';
     mosquito.style.top  = posicao_y + 'px';
     mosquito.style.position = 'absolute';
-    mosquito.id = 'mosquito'
+    mosquito.id = 'mosquito';
+    mosquito.onclick = function() {
+       this.remove();
+    }
 
     document.body.appendChild(mosquito);
  
@@ -63,13 +88,18 @@ function tamanhoAleatorio() {
 function ladoAleatorio() {
     var classe = Math.floor(Math.random() * 2);
 
-    switch(classe) {
-        case 0:
-            return 'ladoA'
-            
-        case 1:
-            return 'ladoB';
+    if(classe == 0) {
+        return 'ladoA';
+    } else {
+        return 'ladoB';
     }
+    // switch(classe) {
+    //     case 0:
+    //         return 'ladoA'
+            
+    //     case 1:
+    //         return 'ladoB';
+    // }
 }
 
 
