@@ -51,8 +51,8 @@ function posicaoRandomica() {
         }
     }
 
-    var posicao_x = Math.floor(Math.random() * largura) - 150;
-    var posicao_y = Math.floor(Math.random() * altura) - 150;
+    var posicao_x = Math.floor(Math.random() * largura) - 90;
+    var posicao_y = Math.floor(Math.random() * altura) - 90;
 
     posicao_x = posicao_x < 0 ? 0 : posicao_x
     posicao_Y = posicao_y < 0 ? 0 : posicao_y;
@@ -86,16 +86,6 @@ function tamanhoAleatorio() {
     } else {
         return 'mosquito3';
     }
-    // switch(classe) {
-    //     case 0:
-    //         return 'mosquito1'
-            
-    //     case 1:
-    //         return 'mosquito2';
-
-    //     case 2:
-    //         return 'mosquito3';
-    // }
 }
 
 function ladoAleatorio() {
@@ -106,13 +96,6 @@ function ladoAleatorio() {
     } else {
         return 'ladoB';
     }
-    // switch(classe) {
-    //     case 0:
-    //         return 'ladoA'
-            
-    //     case 1:
-    //         return 'ladoB';
-    // }
 }
 
 
